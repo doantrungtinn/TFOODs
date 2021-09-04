@@ -38,6 +38,10 @@ public class ProductBus {
    public int updateProduct(Product product){
        return ProductDao.updateProduct(product);
    }
+   
+   public int deleteProduct(Product product){
+       return ProductDao.updateProduct(product);
+   }
 }
 
 

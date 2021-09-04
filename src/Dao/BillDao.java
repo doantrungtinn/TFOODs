@@ -30,7 +30,7 @@ public class BillDao {
         dB=new ConnectDB();
         this.connection=dB.GetConnect();
     }
-    public boolean insertBill(Bill bill) throws FileNotFoundException {
+    public boolean insertBill(Bill bill) throws Exception {
        // PreparedStatement statement = null;
         try {
             //InputStream is = new FileInputStream(new File(String.valueOf(product.getImage()) ));

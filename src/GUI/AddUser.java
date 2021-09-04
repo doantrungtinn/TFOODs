@@ -5,7 +5,8 @@
  */
 package GUI;
 
-import DAO.UserDao;
+import BUS.UserBus;
+import Dao.UserDao;
 import EndCode.Md5;
 import DTO.User;
 import java.util.logging.Level;
@@ -297,9 +298,9 @@ public class AddUser extends javax.swing.JFrame {
                 sex="Nữ";
             }
              md5=new Md5(password);
-                userDao=new UserDao();
+                UserBus userBus=new UserBus();
                 user=new User(null,name,username,md5.getMd5(),sex,role);
-                if (userDao.insert(user)==true) {
+                if (userBus.insert(user)==true) {
                     JOptionPane.showMessageDialog(jPanel1, "Thêm Thành Công");
                    this.dispose();
                  //  new Home().setVisible(true);

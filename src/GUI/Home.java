@@ -5,7 +5,7 @@ import DAO.BillDao;
 import DAO.BillDetailDao;
 import DAO.CategoryDao;
 import DAO.ProductDao;
-import DAO.UserDao;
+import Dao.UserDao;
 import DTO.Bill;
 import DTO.BillDetail;
 import DTO.Category;

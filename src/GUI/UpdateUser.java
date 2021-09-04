@@ -5,7 +5,8 @@
  */
 package GUI;
 
-import DAO.UserDao;
+import BUS.UserBus;
+import Dao.UserDao;
 import DTO.User;
 import javax.swing.JOptionPane;
 
@@ -26,8 +27,8 @@ public class UpdateUser extends javax.swing.JFrame {
           jRadioButtonAdmin.setSelected(false);
           jRadioButtonMale.setSelected(false);
           jRadioButtonFemale.setSelected(false);
-        UserDao dao=new UserDao();
-        User user=dao.getbyId(idUser);
+        UserBus bus=new UserBus();
+        User user=bus.getbyId(idUser);
         user=new User(user.getId(),user.getName(),user.getUsername(),user.getPassword(),user.getSex(),user.getRole());
         jTextFieldName.setText(user.getName());
         jTextFieldUsename.setText(user.getUsername());
@@ -307,8 +308,8 @@ public class UpdateUser extends javax.swing.JFrame {
             sexString="Nữ";
         }
         User user=new User(this.id,name,username,password,sexString,role);
-        UserDao userDao=new UserDao();
-        if (userDao.updateUser(user)>0) {
+        UserBus userBus=new UserBus();
+        if (userBus.updateUser(user)>0) {
              JOptionPane.showMessageDialog(UpdateUser.this, "Update Thành Công !!!");
              this.dispose();
         }

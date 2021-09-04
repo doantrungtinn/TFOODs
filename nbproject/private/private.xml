@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/tindoan/Desktop/SGU/FoodTSK/FoodTSK/src/GUI/Home.java</file>
-            <file>file:/Users/tindoan/Desktop/SGU/FoodTSK/FoodTSK/src/DTO/Bill.java</file>
-            <file>file:/Users/tindoan/Desktop/SGU/FoodTSK/FoodTSK/src/Dao/BillDao.java</file>
-            <file>file:/Users/tindoan/Desktop/SGU/FoodTSK/FoodTSK/src/GUI/AddProduct.java</file>
+            <file>file:/Users/tindoan/Desktop/SGU/FoodTSK/TFOODs/src/Dao/BillDao.java</file>
+            <file>file:/Users/tindoan/Desktop/SGU/FoodTSK/TFOODs/src/BUS/ProductBus.java</file>
+            <file>file:/Users/tindoan/Desktop/SGU/FoodTSK/TFOODs/src/BUS/UserBus.java</file>
+            <file>file:/Users/tindoan/Desktop/SGU/FoodTSK/TFOODs/src/Dao/UserDao.java</file>
         </group>
     </open-files>
 </project-private>

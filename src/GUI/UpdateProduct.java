@@ -5,8 +5,9 @@
  */
 package GUI;
 
+import BUS.ProductBus;
 import DAO.ProductDao;
-import DAO.UserDao;
+import Dao.UserDao;
 import DTO.Product;
 import DTO.User;
 import java.io.FileNotFoundException;
@@ -25,8 +26,8 @@ public class UpdateProduct extends javax.swing.JFrame {
     public UpdateProduct(int id) {
         initComponents();
         this.id=id;
-        ProductDao productDao=new ProductDao();
-        Product product=productDao.getbyId(id);
+        ProductBus productBus=new ProductBus();
+        Product product=productBus.getbyId(id);
         jTextFieldNameProduct.setText(product.getName());
         jTextFieldPrice.setText(String.valueOf(product.getPrice()));
         jTextFieldQuantity.setText(String.valueOf(product.getQuantity()));
@@ -320,8 +321,8 @@ public class UpdateProduct extends javax.swing.JFrame {
             cat=2;
         }
         Product product=new Product(this.id,name,cat,quantity,price);
-        ProductDao productDao=new ProductDao();
-        if (productDao.updateProduct(product)>0) {
+        ProductBus productBus=new ProductBus();
+        if (productBus.updateProduct(product)>0) {
              JOptionPane.showMessageDialog(UpdateProduct.this, "Update Thành Công !!!");
              this.dispose();
         }

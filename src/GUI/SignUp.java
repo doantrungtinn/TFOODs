@@ -5,8 +5,9 @@
  */
 package GUI;
 
+import BUS.UserBus;
 import DB.ConnectDB;
-import DAO.UserDao;
+import Dao.UserDao;
 import EndCode.Md5;
 import DTO.Role;
 import DTO.User;
@@ -156,24 +157,28 @@ public class SignUp extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        userDao=new UserDao();
+        UserBus userBus=new UserBus();
         String username= TextFieldUsername.getText();
         String password=TextFieldPassword.getText();
-        if (userDao.login(username, password)==true) {
-            try {
-                User user=userDao.getUserLogined(username, password);
-                Role role=new Role(user.getRole());
+        try {
+            if (userBus.login(username, password)==true) {
                 try {
-                    new Home().setVisible(true);
-                } catch (Exception ex) {
+                    User user=userBus.getUserLogined(username, password);
+                    Role role=new Role(user.getRole());
+                    try {
+                        new Home().setVisible(true);
+                    } catch (Exception ex) {
+                        Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    this.dispose();
+                } catch (SQLException ex) {
                     Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                this.dispose();
-            } catch (SQLException ex) {
-                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+            }else{
+                JOptionPane.showMessageDialog(null, "Login Fails");
             }
-        }else{
-             JOptionPane.showMessageDialog(null, "Login Fails");
+        } catch (Exception ex) {
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
