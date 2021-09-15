@@ -139,6 +139,11 @@ public class AddProduct extends javax.swing.JFrame {
         jRadioButtonFood.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButtonFood.setSelected(true);
         jRadioButtonFood.setText("Food");
+        jRadioButtonFood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonFoodActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButtonDrink);
         jRadioButtonDrink.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -369,6 +374,10 @@ public class AddProduct extends javax.swing.JFrame {
               jTextFieldPrice.setEditable(true);
         }
     }//GEN-LAST:event_jTextFieldPriceKeyPressed
+
+    private void jRadioButtonFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFoodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonFoodActionPerformed
 
      public ImageIcon ResizeImage(String imgPath){
         ImageIcon MyImage = new ImageIcon(imgPath);

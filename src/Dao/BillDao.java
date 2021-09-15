@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package Dao;
 
 import DB.ConnectDB;
 import DTO.Bill;
@@ -76,7 +76,7 @@ public class BillDao {
  }
        public ArrayList<Bill>getAllRowsDate(String date)throws Exception{
         ArrayList<Bill> lst=new ArrayList<Bill>();
-        String sql="select * from bill WHERE  date=?";
+        String sql= "select * from bill WHERE  date=?";
          PreparedStatement stmt=connection.prepareStatement(sql);
            stmt.setString(1,date);
     // user lh=null;

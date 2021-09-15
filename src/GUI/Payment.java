@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import DAO.BillDao;
+import Dao.BillDao;
 import DAO.BillDetailDao;
 import DTO.Bill;
 import DTO.BillDetail;
@@ -403,38 +403,31 @@ public class BillPrintable implements Printable {
         
         PrinterJob pj = PrinterJob.getPrinterJob();        
         pj.setPrintable(new BillPrintable(),getPageFormat(pj));
+        BillDao bd=new BillDao();
+        String[] time=String.valueOf(java.time.LocalTime.now()).split("\\.");
+        String [] time1=time[0].split("\\:");
+        String timeNow=time1[0]+":"+time1[1];
+        Bill b=new Bill(null,timeNow,String.valueOf(java.time.LocalDate.now()),Float.parseFloat(totalPayment));
         try {
-            BillDao bd=new BillDao();
-          String[] time=String.valueOf(java.time.LocalTime.now()).split("\\.");
-          String [] time1=time[0].split("\\:");
-          String timeNow=time1[0]+":"+time1[1];
-            Bill b=new Bill(null,timeNow,String.valueOf(java.time.LocalDate.now()),Float.parseFloat(totalPayment));
-            try {
-                if (bd.insertBill(b)==true) {
-                    try {
-                        int idMax=bd.getBillMax();
-                       int rows = TBLPayment.getRowCount();
-                        BillDetailDao bdd=new BillDetailDao();
-                        for (int row = 0; row<rows; row++) {
-                            Integer product=Integer.parseInt(String.valueOf(TBLPayment.getValueAt(row, 0)) ) ;
-                            Integer quantity=Integer.parseInt(String.valueOf(TBLPayment.getValueAt(row, 2)) ) ;
-                            Float price=Float.parseFloat(String.valueOf(TBLPayment.getValueAt(row, 3))) ;
-                            BillDetail bd1=new BillDetail(null,product,idMax,quantity,price);
-                           bdd.insertBillD(bd1);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+            if (bd.insertBill(b)==true) {
+                try {
+                    int idMax=bd.getBillMax();
+                    int rows = TBLPayment.getRowCount();
+                    BillDetailDao bdd=new BillDetailDao();
+                    for (int row = 0; row<rows; row++) {
+                        Integer product=Integer.parseInt(String.valueOf(TBLPayment.getValueAt(row, 0)) ) ;
+                        Integer quantity=Integer.parseInt(String.valueOf(TBLPayment.getValueAt(row, 2)) ) ;
+                        Float price=Float.parseFloat(String.valueOf(TBLPayment.getValueAt(row, 3))) ;
+                        BillDetail bd1=new BillDetail(null,product,idMax,quantity,price);
+                        bdd.insertBillD(bd1);
                     }
-                    pj.print();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+                pj.print();
             }
-            
-          
-        }
-         catch (PrinterException ex) {
-                 ex.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_updatePayment2ActionPerformed
 

@@ -1,7 +1,7 @@
 package GUI;
 
 
-import DAO.BillDao;
+import Dao.BillDao;
 import DAO.BillDetailDao;
 import DAO.CategoryDao;
 import DAO.ProductDao;
@@ -1417,7 +1417,7 @@ public class Home extends javax.swing.JFrame {
     private void btn_addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addProductActionPerformed
        new AddProduct().setVisible(true);
     }//GEN-LAST:event_btn_addProductActionPerformed
-
+//xoá nhân viên 
     private void btn_delProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delProductActionPerformed
         // TODO add your handling code here:
          int row=TBLProduct.getSelectedRow();
@@ -1438,7 +1438,7 @@ public class Home extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_delProductActionPerformed
-
+//cập nhật 
     private void btn_updateProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateProductActionPerformed
         int row=TBLProduct.getSelectedRow();
         if(row==-1){
@@ -1449,7 +1449,7 @@ public class Home extends javax.swing.JFrame {
           // this.dispose();
         }
     }//GEN-LAST:event_btn_updateProductActionPerformed
-
+//Tìm kiếm 
     private void btn_findProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_findProductActionPerformed
         // TODO add your handling code here:
         String keyString=jTextFieldKey.getText();

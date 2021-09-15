@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DAO.BillDao;
+import Dao.BillDao;
 import DTO.Bill;
 import java.util.ArrayList;
 
